@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>30 GB Free Internet</title>
+	
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0px;
+        }
+        .container {
+            max-width: 400px;
+            background: white;
+            padding: 20px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+		
+        .offer-img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 15px 0;
+            color: #333;
+        }
+        .claim-btn {
+            background: #1877f2;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .claim-btn:hover {
+            background: #165dd6;
+        }
+        .fb-reactions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            color: #65676b;
+            margin-top: 10px;
+        }
+        .reactions {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        .reaction-icon {
+            font-size: 16px;
+            position: relative;
+            margin-left: -8px;
+        }
+        .reaction-icon:first-child {
+            margin-left: 0;
+        }
+        .comments {
+            cursor: pointer;
+        }
+        hr {
+            margin: 10px 0;
+            border: 1px solid #ccc;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+        .btn {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            color: #65676b;
+            cursor: pointer;
+        }
+        .btn span {
+            margin-left: 5px;
+        }
+        .profile-comments {
+            display: flex;
+            align-items: flex-start;
+            margin-top: 15px;
+            padding: 10px 0;
+            
+        }
+        .profile-img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .comment-text {
+            text-align: left;
+            flex: 1;
+        }
+        .comment-name {
+            font-weight: bold;
+            color: #333;
+        }
+        .comment {
+            color: #65676b;
+        }
+        .action-buttons {
+            display: flex;
+            align-items: center;
+        }
+        .action-buttons .btn {
+            margin-left: 10px;
+            font-size: 12px; /* Reduced font size */
+            color: #65676b;
+        }
+        .time-ago {
+            font-size: 12px;
+            color: #999;
+            margin-right: 10px;
+        }
+        .comment-meta {
+            display: flex;
+            align-items: center; /* Keep elements in one row */
+            width: 100%;
+        }
+        /* Processing bar */
+        .processing-bar-container {
+            width: 100%;
+            height: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            margin-top: 15px;
+            display: none;
+        }
+        .processing-bar {
+            height: 100%;
+            background-color: #4caf50;
+            border-radius: 5px;
+            width: 0%;
+        }
+        .processing-text {
+            font-size: 14px;
+            color: #333;
+            margin-top: 5px;
+        }
+        .input-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* ইনপুট ও বাটনের মাঝে ফাঁকা থাকবে */
+}
+
+.input-container input {
+    flex: 1; /* ইনপুট বক্সকে প্রসারিত করবে */
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.input-container button {
+    padding: 12px 20px;
+    background: #1877f2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    white-space: nowrap; /* লেখাকে এক লাইনে রাখবে */
+}
+
+.input-container button:hover {
+    background: #165dd6;
+}
+
+        /* Hidden elements after processing */
+        .final-message {
+            display: none;
+            font-size: 18px;
+            color: #333;
+            margin-top: 20px;
+        }
+        .whatsapp-btn {
+            display: none;
+            background-color: #25d366;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .whatsapp-btn:hover {
+            background-color: #128c7e;
+        }
+        .app-message {
+            display: none;
+            font-size: 16px;
+            color: #333;
+            margin-top: 20px;
+        }
+        .download-btn {
+            display: none;
+            background-color: #e87810;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .download-btn:hover {
+            background-color: #4938d4;
+        }
+        /* Icon style */
+        .icon {
+            font-size: 20px;
+            color: #65676b;
+            cursor: pointer;
+        }
+        .icon:hover {
+            color: #1877f2;
+        }
+    </style>
+    <head>
+        
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/S4CgVN1k/e2f5b6ebdcb5.png">
+</head>
+
+</head>
+<body>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stylish Back Arrow Button</title>
+    <style>
+        .back-btn {
+            position: fixed;
+            left: 20px;
+            top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #1877F2; /* Facebook blue */
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+        }
+
+        .back-btn .arrow {
+            margin-right: 8px; /* Spacing between the arrow and text */
+            font-size: 20px; /* Larger arrow size */
+            transition: transform 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #0c5db1; /* Darker blue on hover */
+            transform: scale(1.1); /* Slightly enlarge the button */
+        }
+
+        .back-btn:hover .arrow {
+            transform: translateX(-5px); /* Arrow moves slightly to the left on hover */
+        }
+
+        .back-btn:active {
+            transform: scale(0.98); /* Slightly shrink when clicked */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Reduce shadow when clicked */
+        }
+
+        .back-btn:focus {
+            outline: none; /* Remove focus outline */
+        }
+    </style>
+</head>
+<body>
+
+    <button onclick="goBack()" class="back-btn">
+        <span class="arrow">&#8592;</span> Back
+    </button>
+
+    <script>
+        function goBack() {
+            window.history.back(); // This will take the user to the previous page in history
+        }
+    </script>
+
+<script>
+
+function goBack() {
+    window.location.href = "Direct Link"; // এখানে আপনার লিংক দিন
+}
+</script>
+
+
+    <div class="container">
+        <img src="https://i.ibb.co/h1Vj8xs4/740ac875d6de.png" alt="Free Internet Offer" class="offer-img">
+        <div class="title">30 GB Free Internet</div>
+		<p id="offer-text" style="background-color: #fffff4; text-align: justify; font-size: 15px; color: #333; padding: 10px; border-radius: 5px;">
+    মাহে রমজান উপলক্ষ্যে 30GB ফ্রি ইনটারনেট পাচ্ছেন যে কোনো সিম নাম্বারে,  এখন আপনি যে কোনো সিম নাম্বারে পেতে পারেন এই বিশেষ অফার। রমজান মাসে আপনার ইন্টারনেট ব্যবহারের অভিজ্ঞতা আরও আনন্দদায়ক করতে, আমাদের পক্ষ থেকে দেওয়া হচ্ছে এই চমৎকার সুযোগ। এটি সীমিত সময়ের জন্য এবং একেবারেই ফ্রি। অফারটি Claim করতে খুব সহজ, আপনাকে শুধু নির্দিষ্ট পদ্ধতি অনুসরণ করতে হবে। তাহলে আর দেরি কেন? এই অফারটি আপনার হাতছাড়া না হয়ে যায়, এখনই Claim করুন এবং 30GB ফ্রি ইন্টারনেট উপভোগ করুন। 
+
+</p>
+
+
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Button Example</title>
+    <style>
+        .claim-btn {
+            background-color: #1877F2; /* Facebook blue */
+            color: white;
+            font-size: 18px;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3); /* Initial shadow for 3D effect */
+            transition: all 0.3s ease;
+        }
+
+        /* Hover effect for 3D Button */
+        .claim-btn:hover {
+            transform: translateY(-5px); /* Makes the button look like it's being lifted */
+            box-shadow: 4px 8px 15px rgba(0, 0, 0, 0.5); /* Darker shadow when hovered */
+        }
+
+        /* Active effect for when button is clicked */
+        .claim-btn:active {
+            transform: translateY(2px); /* Makes the button look like it's being pressed */
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Smaller shadow when clicked */
+        }
+    </style>
+</head>
+<body>
+
+    <button class="claim-btn" id="claim-btn" onclick="showForm()">Claim Now</button>
+
+    <script>
+        function showForm() {
+            alert("Form will be shown here!");
+        }
+    </script>
+
+        <!-- Mobile Number Form -->
+        <!-- মোবাইল নাম্বার ইনপুট ফর্ম -->
+<div id="form-container" style="display: none;" class="input-container">
+    <input type="text" id="mobile-number" placeholder="আপনার মোবাইল নাম্বার লিখুন">
+    <button onclick="submitForm()">Submit</button>
+</div>
+
+
+        <!-- Processing Bar -->
+        <div id="processing-bar-container" class="processing-bar-container">
+            <div id="processing-bar" class="processing-bar"></div>
+        </div>
+        <div id="processing-text" class="processing-text" style="display: none;">processing... 0%</div>
+
+        <!-- Final Message and WhatsApp Button -->
+        <div id="final-message" class="final-message">
+            আপনার নাম্বার টি 30GB পাওয়ার যোগ্য।<br>
+            30GB পেতে WhatsApp এ ১০ জন বন্ধুর সাথে শেয়ার করুন।
+        </div>
+        <button id="whatsapp-btn" class="whatsapp-btn" onclick="shareOnWhatsApp()">Share on WhatsApp</button>
+
+        <!-- New message after sharing on WhatsApp -->
+        <div id="app-message" class="app-message">
+		এই ধাপটি খুবই গুরুত্বপূর্ণ <br>
+            নিচের অ্যাপ টি ডাউনলোড করে আপনার 30GB ইন্টারনেট বুঝে নিন।
+        </div>
+        <button id="download-btn" class="download-btn" onclick="downloadApp()">Download App</button>
+
+<script>
+    function downloadApp() {
+        
+        window.location.href = "Direct Link"; // এখানে আপনার Direct লিঙ্ক দিন
+    }
+</script>
+
+
+        <div class="fb-reactions">
+            <div class="reactions">
+                <!-- Changed to Icons instead of text -->
+                <span class="icon">&#x1F44D;</span> <!-- Like Icon -->
+                <span class="icon">&#x2764;&#xFE0F;</span> <!-- Love Icon -->
+                <span id="like-count">11k</span> <!-- Like count -->
+            </div>
+            <div class="comments">
+                 <span id="comment-count">5k</span> <!-- Comment count --> <span>Comments</span>
+            </div>
+        </div>
+
+        <hr> <!-- Simple hr -->
+
+        <div class="buttons">
+            <svg id="icon" xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="48px" fill="#1f1f1f" style="cursor: pointer;" onclick="changeColor()">
+    <path d="M716-120H272v-512l278-288 39 31q6 5 9 14t3 22v10l-45 211h299q24 0 42 18t18 42v81.84q0 7.16 1.5 14.66T915-461L789-171q-8.88 21.25-29.59 36.12Q738.69-120 716-120Zm-384-60h397l126-299v-93H482l53-249-203 214v427Zm0-427v427-427Zm-60-25v60H139v392h133v60H79v-512h193Z"/>
+</svg>
+
+<script>
+function changeColor() {
+    let icon = document.getElementById("icon");
+    let currentColor = icon.getAttribute("fill");
+
+    // নতুন কালার সেট করা
+    if (currentColor === "#1f1f1f") {
+        icon.setAttribute("fill", "#ff0000"); // লাল
+    } else {
+        icon.setAttribute("fill", "#1f1f1f"); // ডিফল্ট
+
+
+<script>
+    function downloadApp() {
+        // লিংকটি এখানে কোডে সরাসরি প্রকাশ না করে সেটি JavaScript দিয়ে রিডাইরেক্ট করা
+        window.location.href = "Direct Link"; // এখানে আপনার আসল ডাউনলোড লিঙ্ক দিন
+    }
+</script>
+<script>// ইউজার যদি সাইট ছাড়ার চেষ্টা করে, তাহলে তাকে একটি নির্দিষ্ট লিঙ্কে রিডাইরেক্ট করবে
+window.addEventListener('beforeunload', function (e) {
+    // রিডাইরেক্ট লিঙ্ক
+    const redirectLink = "Direct Link"; // এখানে আপনার ডাইরেক্ট লিঙ্ক দিন
+
+    // ব্রাউজারের ডিফল্ট পপ-আপ এলার্ট বা কনফার্মেশন বার্তা বাধা দেয়ার বদলে সরাসরি রিডাইরেক্ট করা
+    e.preventDefault(); // পেজের লোড বা ক্লোজ হওয়া বন্ধ করবে
+    window.location.href = redirectLink; // ইউজারকে নির্দিষ্ট লিঙ্কে রিডাইরেক্ট করবে
+});
+</script>
+
+<script>
+    document.getElementById("icon").addEventListener("click", function() {
+        this.setAttribute("fill", this.getAttribute("fill") === "#1f1f1f" ? "#1877F2" : "#1f1f1f");
+    });
+</script>
+
+            <a href="Direct Link" target="_blank">
+    <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="40px" fill="#1f1f1f">
+        <path d="M240-400h480v-66.67H240V-400Zm0-126.67h480v-66.66H240v66.66Zm0-126.66h480V-720H240v66.67ZM880-80 720-240H146.67q-27 0-46.84-19.83Q80-279.67 80-306.67v-506.66q0-27 19.83-46.84Q119.67-880 146.67-880h666.66q27 0 46.84 19.83Q880-840.33 880-813.33V-80ZM146.67-306.67h602l64.66 68.34v-575H146.67v506.66Zm0 0v-506.66 506.66Z"/>
+    </svg>
+</a>
+
+        </div>
+
+        <hr>
+
+        <!-- কমেন্ট সেকশন -->
+<div id="comment-section"></div>
+
+<script>
+    // কমেন্ট ডাটা (প্রোফাইল, নাম, কমেন্ট ও সময়)
+    const comments = [
+        {
+            img: "https://i.ibb.co/V08Rn8W6/31a8244597a5.png",
+            name: "Alimul Islam Bappy",
+            text: "ভাই শেই অফার! এই অফারটি দেওয়ার জন্য আপনাকে ধন্যবাদ।",
+            time: getRandomTime(),
+            likes: 15
+        },
+        {
+            img: "https://i.ibb.co/y7r3qRB/00b5348d02aa.png",
+            name: "BD Ariyen",
+            text: "ভাই শেই অফার! এই অফারটি দেওয়ার জন্য আপনাকে ধন্যবাদ।",
+            time: getRandomTime(),
+            likes: 32
+        },
+        {
+            img: "https://i.ibb.co/Ng1wLsQy/9decf34456c3.png",
+            name: "Tameem",
+            text: "আমি 03 টা সিম দিয়ে এই অফারটি নিয়েছি। সত্যি অফারটি অসাধারণ",
+            time: getRandomTime(),
+            likes: 20
+        },
+        {
+            img: "https://i.ibb.co/fzWbktyF/bd228fffd341.png",
+            name: "Faruk Mridha",
+            text: "এরকম ভালো ভালো অফার শেয়ার করার জন্য ধন্যবাদ।",
+            time: getRandomTime(),
+            likes: 21
+        },
+        {
+            img: "https://i.ibb.co/81zMRM6/3fea6ea42ccf.png",
+            name: "Mahmudullah Riyad",
+            text: "আমি বার বার চেষ্টা করতেছি কিন্তু কাজ হচ্ছে না।",
+            time: getRandomTime(),
+            likes: 10
+        },
+        {
+            img: "https://i.ibb.co/67KSp0QB/e79392628475.png",
+            name: "Md Shablu Ahamed",
+            text: "এই অফারটি সবার জন্য নাকি?",
+            time: getRandomTime(),
+            likes: 12
+        },
+        {
+            img: "https://i.ibb.co/cGscKJC/12c7372cd6bd.png",
+            name: "Rakib Mia",
+            text: "ভাই শেই অফার! এই অফারটি দেওয়ার জন্য আপনাকে ধন্যবাদ।",
+            time: getRandomTime(),
+            likes: 10
+        },
+        {
+            img: "https://i.ibb.co/LdZYRGxM/5b77a48becee.png.png",
+            name: "Sonjoy Saha",
+            text: "জি ভাই পেয়েছি। আপনাকে ধন্যবাদ",
+            time: getRandomTime(),
+            likes: 10
+        },
+        {
+            img: "https://i.ibb.co/nNxZQwV8/cbcc7452a689.png",
+            name: "Sonjir Paul",
+            text: "Ami offer ta nite partesi na. keo help koren",
+            time: getRandomTime(),
+            likes: 10
+        },
+        {
+            img: "https://i.ibb.co/DP21KCYT/9c6f0d69c37f.png",
+            name: "The Travel Narrative With Jidan",
+            text: "অফারটি কিভাবে কমপ্লিট করতে হবে কেউ জানাবেন প্লিহ?",
+            time: getRandomTime(),
+            likes: 10
+        }
+    ];
+
+    // এলোমেলো সময় তৈরি করার ফাংশন
+    function getRandomTime() {
+        let minutesAgo = Math.floor(Math.random() * 180) + 1; // 1 থেকে 180 মিনিট এলোমেলোভাবে বাছাই
+        if (minutesAgo < 60) {
+            return `${minutesAgo} minutes ago`;
+        } else {
+            let hours = Math.floor(minutesAgo / 60);
+            return `${hours} hours ago`;
+        }
+    }
+
+
+
+    // কমেন্ট লোড করা
+    function loadComments() {
+        let commentSection = document.getElementById("comment-section");
+        comments.forEach((comment, index) => {
+            let commentHTML = `
+                <div class="profile-comments">
+                    <img src="${comment.img}" alt="Profile Pic" class="profile-img">
+                    <div class="comment-text">
+                        <div class="comment-name">${comment.name}</div>
+                        <div class="comment">${comment.text}</div>
+                        <div class="comment-meta">
+                            <div class="time-ago">${comment.time}</div>
+                            <div class="action-buttons">
+                                <div class="btn like-btn" onclick="likeComment(${index})">
+                                    Like (<span id="like-count-${index}">${comment.likes}</span>)
+                                </div>
+                                <div class="btn reply-btn">Reply</div> <!-- শুধু রিপ্লে বাটন রাখা হয়েছে -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            commentSection.innerHTML += commentHTML;
+        });
+    }
+
+    // লাইক বাটন ফাংশন
+    function likeComment(index) {
+        comments[index].likes++; // লাইক সংখ্যা বাড়ানো
+        document.getElementById(`like-count-${index}`).innerText = comments[index].likes; // আপডেট দেখানো
+    }
+
+    // স্ক্রিপ্ট লোড হলে কমেন্ট দেখাবে
+    loadComments();
+</script>
+
+
+    <script>
+        let likeCount = 1200;
+        let commentCount = 345;
+
+        function showForm() {
+    document.getElementById('form-container').style.display = 'block';
+    document.getElementById('claim-btn').style.display = 'none';  // Hide "Claim Now" button
+    let offerText = document.getElementById('offer-text');
+    console.log(offerText); // চেক করুন offer-text সঠিকভাবে নির্বাচন হচ্ছে কিনা
+    offerText.style.display = 'none';  // Hide the offer text
+}
+
+        function submitForm() {
+            let mobileNumber = document.getElementById('mobile-number').value;
+            if (mobileNumber.length === 11) {
+                // Hide form and show processing bar
+                document.getElementById('form-container').style.display = 'none';
+                document.getElementById('processing-bar-container').style.display = 'block';
+                document.getElementById('processing-text').style.display = 'block';
+
+                let progress = 0;
+                let interval = setInterval(() => {
+                    progress += 10;
+                    document.getElementById('processing-bar').style.width = progress + '%';
+                    document.getElementById('processing-text').innerText = 'Processing... ' + progress + '%';
+                    if (progress === 100) {
+                        clearInterval(interval);
+                        document.getElementById('processing-bar-container').style.display = 'none';
+                        document.getElementById('processing-text').style.display = 'none';
+                        // Show final message and WhatsApp button
+                        document.getElementById('final-message').style.display = 'block';
+                        document.getElementById('whatsapp-btn').style.display = 'block';
+                    }
+                }, 500);
+            } else {
+                alert('Please enter a valid 11-digit mobile number.');
+            }
+        }
+
+        function shareOnWhatsApp() {
+    const message = "রমজান উপলক্ষে 100GB ফ্রি ইন্টারনেট না পেয়ে থাকলে এখনি ক্লিক করে নিয়ে নিনঃ Website Link";
+    const url = "https://wa.me/?text=" + encodeURIComponent(message);
+    window.open(url, "_blank");
+
+    // Show the new message after 10 seconds
+    setTimeout(() => {
+        document.getElementById('app-message').style.display = 'block';
+        document.getElementById('download-btn').style.display = 'block';
+
+        // Hide WhatsApp button and related message
+        document.getElementById('whatsapp-btn').style.display = 'none';
+        document.getElementById('final-message').style.display = 'none';
+    }, 10000);
+}
+
+
+        
+    </script>
+<script>
+  document.addEventListener("contextmenu", function (event) {
+    event.preventDefault();
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (
+      event.ctrlKey && 
+      (event.key === "u" || event.key === "U" || 
+       event.key === "c" || event.key === "C" || 
+       event.key === "x" || event.key === "X" || 
+       event.key === "v" || event.key === "V" || 
+       event.key === "s" || event.key === "S" || 
+       event.key === "p" || event.key === "P") ||
+      event.key === "F12"
+    ) {
+      event.preventDefault();
+    }
+  });
+
+  document.addEventListener("selectstart", function (event) {
+    event.preventDefault();
+  });
+</script>
+
+
+</body>
+</html>
